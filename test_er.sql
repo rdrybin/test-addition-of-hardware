@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Сен 30 2022 г., 16:06
+-- Время создания: Окт 04 2022 г., 07:32
 -- Версия сервера: 5.7.33
 -- Версия PHP: 8.0.14
 
@@ -92,7 +92,8 @@ INSERT INTO `hardware_type` (`id`, `name`, `serail_mask`) VALUES
 --
 ALTER TABLE `hardware`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `unique_serial` (`serial`);
+  ADD UNIQUE KEY `unique_serial` (`serial`),
+  ADD KEY `foregin_type_id` (`type_id`);
 
 --
 -- Индексы таблицы `hardware_type`
@@ -115,6 +116,16 @@ ALTER TABLE `hardware`
 --
 ALTER TABLE `hardware_type`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- Ограничения внешнего ключа сохраненных таблиц
+--
+
+--
+-- Ограничения внешнего ключа таблицы `hardware`
+--
+ALTER TABLE `hardware`
+  ADD CONSTRAINT `foregin_type_id` FOREIGN KEY (`type_id`) REFERENCES `hardware_type` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

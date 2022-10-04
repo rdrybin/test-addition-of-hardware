@@ -35,19 +35,19 @@ class MaskValidator
             switch ($e) {
                 case 'N':
                     array_push($regExp, '[\d]');
-                    break 1;
+                    break;
                 case 'A':
                     array_push($regExp, '[A-Z]');
-                    break 1;
+                    break;
                 case 'a':
                     array_push($regExp, '[a-z]');
-                    break 1;
+                    break;
                 case 'X':
                     array_push($regExp, '[A-Z0-9]');
-                    break 1;
+                    break;
                 case 'Z':
                     array_push($regExp, '(-|_|@)');
-                    break 1;
+                    break;
                 default:
                     return false;
             }
